@@ -3,19 +3,18 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width; initial-scale=1;">
+<meta name="viewport" content="width=device-width; initial-scale=1;" />
 <title>Radiation Info</title>
-<link rel="stylesheet" href="_css/reset.css" type="text/css" media="all" />
-<link rel="stylesheet" href="_css/screen.css" type="text/css" media="all" />
-<link rel="stylesheet" href="_css/320.css" type="text/css" media="screen and (max-width: 960px)" />
+<link rel="stylesheet" href="{{CSS}}_css/all.css" type="text/css" media="all" />
+<link rel="stylesheet" href="{{CSS}}_css/320.css" type="text/css" media="screen and (max-width: 960px)" />
 <!--[if lte IE 8]>
-<link rel="stylesheet" href="_css/ie.css" type="text/css" media="all" />
+<link rel="stylesheet" href="{{CSS}}_css/ie.css" type="text/css" media="all" />
 <![endif]-->
 </head>
 <body>
 	<div class="container">
 		<div class="header">
-			<h1><a href="/"><img src="_img/logo.png" alt="Radiation Info" /></a></h1>
+			<h1><a href="/"><img src="{{IMAGE}}_img/logo.png" alt="Radiation Info" /></a></h1>
 		</div>
 
 		<div class="top dropshadow">
@@ -23,7 +22,7 @@
 				<div class="left">
 					<h2>Exposure</h2>
 					<div class="liner">
-						<div class="scale"><img src="_img/scale.png" width="124" height="437" /></div>
+						<div class="scale"><img src="{{IMAGE}}_img/scale.png" width="124" height="437" alt="" /></div>
 						<form id="parameters" action="" method="get"><div>
 							<input type="text" name="level" id="level" value="" autocomplete="off" maxlength="8"/>
 							<select name="unit" id="unit">
@@ -83,7 +82,7 @@
 					<h2>Embed The Gadget</h2>
 					<p>Do you run a site that is covering the news in Japan? You can embed our gadget that identifies severity directly into your site. Simply include the following script tag just before your &lt;/body&gt; tag:</p>
 					<code>
-						&lt;script src="http://cdn.radiationinfo.org/_js/embed.js"&gt;&lt;/script&gt;
+						&lt;script src="{{CDN}}_js/embed.js"&gt;&lt;/script&gt;
 					</code>
 
 					<p>Hover to see what it looks like:</p>
@@ -94,7 +93,7 @@
 					<p>The gadget is minified and served gzipped from Amazon Web Services's CloudFront to minimize the performance impact on the load of your page. It adds only one global variable ("radiation") and plays nicely with others. Do not save the file and serve it from your own server as that reduces the benefits of your user's cache and prevents you from receiving updates which may improve accuracy or performance. Please confirm that it works with the bookmarklet version prior to embedding it on your site.</p>
 					<p>You may also link to this page with prepopulated values:</p>
 					<code class="exclude">
-						&lt;a href="http://www.radiationinfo.org/?level=250&amp;unit=millisieverts&amp;rate=hour"&gt;250 millisieverts per hour&lt;/a&gt;
+						&lt;a href="{{HOST}}?level=250&amp;unit=millisieverts&amp;rate=hour"&gt;250 millisieverts per hour&lt;/a&gt;
 					</code>
 				</div>
 			</div>
@@ -103,8 +102,8 @@
 					<h2>Install The Bookmarklet</h2>
 					<p>Are you following the news in Japan and want our gadget on news sites that you visit? Please email them and ask them to include the tool in their site. In the mean time, however, you don't have to go without.</p>
 					<p>Click and drag the following link to your bookmarks bar. Whenever you're on a page click this bookmark and it will embed the gadget.</p>
-					<a class="bookmarklet dropshadow" href="javascript:(function(){var s=document.createElement('script');s.src='http://cdn.radiationinfo.org/_js/embed.js';document.body.appendChild(s);})();">
-						<img src="_img/bookmarklet.png" alt="Radiation Info Bookmarklet" />
+					<a class="bookmarklet dropshadow" href="javascript:(function(){var s=document.createElement('script');s.src='{{CDN}}_js/embed.js';document.body.appendChild(s);})();">
+						<img src="{{IMAGE}}_img/bookmarklet.png" alt="Radiation Info Bookmarklet" />
 					</a>
 				</div>
 			</div>
@@ -115,9 +114,9 @@
 		</div>
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.js"></script>
-	<script src="_js/site.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.js"></script>
+	<script type="text/javascript" src="{{JS}}_js/site.js"></script>
 	<script type="text/javascript">
 		var unit;
 
@@ -234,8 +233,8 @@
 		});
 	</script>
 	<!--[if lte IE 8]>
-	<script src="_js/PIE.js"></script>
-	<script src="_js/usepie.js"></script>
+	<script src="{{JS}}_js/PIE.js"></script>
+	<script src="{{JS}}_js/usepie.js"></script>
 	<![endif]-->
 
 	<!--

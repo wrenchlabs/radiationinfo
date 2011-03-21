@@ -157,7 +157,7 @@ var radiation = {
 		var logscale = radiation.logscale(level, unit);
 		var sevvalue = radiation.logscalerange(logscale, 1, 100);
 
-		return "sev"+sevvalue;
+		return "radiationinfo-sev"+sevvalue;
 	},
 
 	getexposuremultiplier: function(from, to) {
@@ -291,7 +291,7 @@ var radiation = {
 			} else {
 				radiation.$ = jQuery.noConflict(true);
 			}
-			$('head').append('<link rel="stylesheet" type="text/css" href="http://cdn.radiationinfo.org/_css/radiation.css" />');
+			$('head').append('<link rel="stylesheet" type="text/css" href="{{CDN}}_css/radiation.css" />');
 			document.body.normalize();
 			radiation.findonpage(document.body);
 			radiation.processfinds();
