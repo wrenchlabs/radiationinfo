@@ -38,7 +38,7 @@ case $1 in
 		# {{IMAGE}} http://cdn.radiationinfo.org/
 		# {{JS}} http://cdn.radiationinfo.org/
 
-		perl -p -i -e 's/{{HOST}}/www\.radiationinfo\.org\//g' ~/sites/radiationinfo/index.html ~/sites/radiationinfo/_css/* ~/sites/radiationinfo/_js/*;
+		perl -p -i -e 's/{{HOST}}/http:\/\/www\.radiationinfo\.org\//g' ~/sites/radiationinfo/index.html ~/sites/radiationinfo/_css/* ~/sites/radiationinfo/_js/*;
 		perl -p -i -e 's/{{([\w]*)}}/http:\/\/cdn\.radiationinfo\.org\//g' ~/sites/radiationinfo/index.html ~/sites/radiationinfo/_css/* ~/sites/radiationinfo/_js/*;
         ;;
     *)
