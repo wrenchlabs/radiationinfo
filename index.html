@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1;">
+<title>Radiation Info</title>
+<link rel="stylesheet" href="_css/reset.css" type="text/css" media="all" />
+<link rel="stylesheet" href="_css/screen.css" type="text/css" media="all" />
+<link rel="stylesheet" href="_css/320.css" type="text/css" media="screen and (max-width: 960px)" />
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="_css/ie.css" type="text/css" media="all" />
+<![endif]-->
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1><a href="/"><img src="_img/logo.png" alt="Radiation Info" /></a></h1>
+		</div>
+
+		<div class="top dropshadow">
+			<div class="innerliner">
+				<div class="left">
+					<h2>Exposure</h2>
+					<div class="liner">
+						<div class="scale"><img src="_img/scale.png" width="124" height="437" /></div>
+						<form id="parameters" action="" method="get"><div>
+							<input type="text" name="level" id="level" value="" autocomplete="off" maxlength="8"/>
+							<select name="unit" id="unit">
+								<option value="μSv">microsievert (μSv)</option>
+								<option value="mSv">millisievert (mSv)</option>
+								<option value="Sv">sievert (Sv)</option>
+								<option value="μGy">microgray (μGy)</option>
+								<option value="mGy">milligray (mGy)</option>
+								<option value="Gy">gray (Gy)</option>
+								<option value="mrem">millirem (mrem)</option>
+								<option value="rem">rem</option>
+							</select>
+							<div>PER</div>
+							<select name="rate" id="rate">
+								<option value="instant">instant</option>
+								<option value="hour" selected="selected">hour</option>
+								<option value="day">day</option>
+								<option value="month">month</option>
+								<option value="year">year</option>
+							</select>
+						</div></form>
+					</div>
+				</div>
+				<div class="right">
+					<h2>Risk</h2>
+					<div class="liner">
+						<div class="calculate">
+							<div id="from" class="unitbox dropshadow"><span class="level"></span> <span class="unit"></span>/<span class="rate"></span></div>
+							<div class="compare">=</div>
+							<div id="to" class="unitbox dropshadow"><span class="level"></span> <span class="unit"></span>/<span class="rate"></span></div>
+						</div>
+
+						<dl class="severity dropshadow">
+							<dt><span class="length">Acute Exposure</span> <span class="details">less than a day</span></dt>
+								<dd class="backgroundsev1">None</dd>
+						</dl>
+						<dl class="severity dropshadow">
+							<dt><span class="length">Long-Term Exposure</span> <span class="details">one year</span></dt>
+								<dd class="backgroundsev80">High</dd>
+						</dl>
+
+						<div class="details">
+							<h3>Details</h3>
+							<!-- General Information -->
+							<p>Risks from radiation are generally more severe in acute dosages, exposure received in a short period of time. Cumulative exposure</p>
+
+							<!-- This Particular Dosage -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="bottom">
+			<div class="left">
+				<div class="liner">
+					<h2>Embed The Gadget</h2>
+					<p>Do you run a site that is covering the news in Japan? You can embed our gadget that identifies severity directly into your site. Simply include the following script tag just before your &lt;/body&gt; tag:</p>
+					<code>
+						&lt;script src="http://cdn.radiationinfo.org/_js/embed.js"&gt;&lt;/script&gt;
+					</code>
+
+					<p>Hover to see what it looks like:</p>
+					<div class="demo dropshadow">
+						<p>Morbi ultrices libero rhoncus leo volutpat. There was radiation measured at a rate of 1 microsievert per hour on Thursday afternoon. Nec pellentesque mauris sollicitudin.</p>
+					</div>
+
+					<p>The gadget is minified and served gzipped from Amazon Web Services's CloudFront to minimize the performance impact on the load of your page. It adds only one global variable ("radiation") and plays nicely with others. Do not save the file and serve it from your own server as that reduces the benefits of your user's cache and prevents you from receiving updates which may improve accuracy or performance. Please confirm that it works with the bookmarklet version prior to embedding it on your site.</p>
+					<p>You may also link to this page with prepopulated values:</p>
+					<code class="exclude">
+						&lt;a href="http://www.radiationinfo.org/?level=250&amp;unit=millisieverts&amp;rate=hour"&gt;250 millisieverts per hour&lt;/a&gt;
+					</code>
+				</div>
+			</div>
+			<div class="right">
+				<div class="liner">
+					<h2>Install The Bookmarklet</h2>
+					<p>Are you following the news in Japan and want our gadget on news sites that you visit? Please email them and ask them to include the tool in their site. In the mean time, however, you don't have to go without.</p>
+					<p>Click and drag the following link to your bookmarks bar. Whenever you're on a page click this bookmark and it will embed the gadget.</p>
+					<a class="bookmarklet dropshadow" href="javascript:(function(){var s=document.createElement('script');s.src='http://cdn.radiationinfo.org/_js/embed.js';document.body.appendChild(s);})();">
+						<img src="_img/bookmarklet.png" alt="Radiation Info Bookmarklet" />
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			Questions? Corrections? Concerns? <a href="mailto:radiationinfo@radiationinfo.org">Get In Touch</a>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.js"></script>
+	<script src="_js/site.js"></script>
+	<script type="text/javascript">
+		var unit;
+
+		// Get the defaults set correctly, allow for prepopulation.
+		var settings = {
+			level: 1,
+			unit: 'microsievert',
+			rate: 'hour'
+		};
+
+		function parseqs(unit) {
+			var regex = new RegExp(unit + '=([^&]+)');
+			if (regex.test(window.location.search)) {
+				return window.location.search.match(regex)[1];
+			} else {
+				return false;
+			}
+		}
+
+		var querystring = {};
+		var args = ['level', 'unit', 'rate'];
+		var temp;
+		for (var i = 0; i < args.length; i++) {
+			temp = parseqs(args[i]);
+			if (temp) {
+				querystring[args[i]] = temp;
+			}
+		}
+
+		$.extend(settings, querystring);
+		settings.unit = radiation.unitkey(settings.unit);
+		var understandable = radiation.understandable(settings.level, settings.unit, settings.rate);
+
+		for (var i = 0; i < args.length; i++) {
+			$('#'+args[i]).val(settings[args[i]]);
+			$('#from .'+args[i]).html(settings[args[i]]);
+			$('#to .'+args[i]).html(understandable[args[i]]);
+		}
+
+		unit = settings.unit;
+
+		// Set up the slider.
+		var formjump = $('.container').width() < 960;
+		$(".scale").slider({ orientation: 'vertical', max: 700, min: 0, step: 1, value: radiation.logscalerange(radiation.logscale(settings.level, settings.unit),0,700)});
+
+		// Events
+
+		// Prevent form submission
+		$('form').bind('submit', function() { return false; });
+
+		// Set up formjump so that I don't have to continuously check it during slide.
+		$(".scale").bind('slidestart', function(event, ui) {
+			formjump = $('.container').width() < 960;
+		});
+
+		// Update the actual value on slide to make it easier to understand that it is a logarithmic scale. Also, do formjump if necessary.
+		// Reset the value one last time on slidestop to ensure it takes.
+		$(".scale").bind('slide slidestop', function(event, ui) {
+			var level = radiation.linearscale(radiation.linearscalerange(ui.value, 0, 700), $('#unit').val()).level;
+			if (formjump) {
+				$('form').css('marginTop', ui.value > 460 ? '309px' : '0px');
+			}
+			$('#level').val(level);
+		});
+
+		// If the user changes level adjust the slider.
+		$("#level").bind('change', function(event) {
+			var level = radiation.logscalerange(radiation.logscale($('#level').val(), $('#unit').val()),0,700);
+			$('.scale').slider('value', level);
+			if (formjump) {
+				$('form').css('marginTop', level > 460 ? '309px' : '0px');
+			}
+		});
+		
+		// If the user changes the unit, adjust the level.
+		$("#unit").bind('change', function(event) {
+			var level = $('#level').val();
+			var from = unit;
+			var to = $(this).val();
+			unit = to;
+			var newlevel = radiation.convert(level, from, to);
+			$('#level').val(newlevel.level);
+		});
+		
+
+		// If the user resizes the window, figure out if I need to formjump.
+		$(window).bind('resize', function() {
+			formjump = $('.container').width() < 960;
+			if (!formjump) {
+				$('form').css('marginTop', '');
+			} else {
+				$('form').css('marginTop', $(".scale").slider('value') > 460 ? '309px' : '0px');
+			}
+		});
+
+		// Adjust information on the right hand side.
+		function builddescription() {
+			var understandable = radiation.understandable($('#level').val(), $('#unit').val(), $('#rate').val());
+			$('#to .level').html(understandable.level);
+			$('#to .unit').html(understandable.unit);
+			$('#to .rate').html(understandable.rate);
+		}
+
+		$(".scale").bind('slidestop', function() {
+			$('#from .level').html($('#level').val());
+
+			builddescription();
+		});
+		$("#level, #unit, #rate").bind('change', function() {
+			$('#from .'+$(this).attr('id')).html($(this).val());
+			$('#from .level').html($('#level').val());
+
+			builddescription();
+		});
+	</script>
+	<!--[if lte IE 8]>
+	<script src="_js/PIE.js"></script>
+	<script src="_js/usepie.js"></script>
+	<![endif]-->
+
+	<!--
+	Radiation Info
+	Concept, research, development, and testing by Wrench Labs: Nathan Hammond (http://www.nathanhammond.com) and Chris Granger (http:///www.chris-granger.com).
+	Design by Lindsay Burtner (http://www.lindsayburtner.com).
+	-->
+</body>
+</html>

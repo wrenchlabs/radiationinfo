@@ -1,0 +1,6 @@
+.top { background: transparent url(../_img/background40.png) left top repeat; }
+.unitbox { background: transparent url(../_img/background80.png) left top repeat; }
+dl.severity { background: transparent url(../_img/background80.png) left top repeat; }
+.bottom .left .demo { background: transparent url(../_img/background40.png) left top repeat; }
+
+.top .right { background: transparent url(../_img/topsplit.png) left top repeat-y; }

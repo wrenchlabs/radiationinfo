@@ -1,0 +1,31 @@
+.header h1 { text-align: center; }
+
+.container { width: 320px; }
+.top { background-image: none; }
+.top .innerliner { background-image: none; }
+
+.top .left h2 { border-right: none; margin-right: 0; }
+.top .left form { width: 50%; margin: 0; }
+.top .right .liner { padding: 5%; }
+.top .right h2 { border-left: none; margin-left: 0; }
+
+.unitbox .level { font-size: 28px; }
+
+dl.severity dt .length { margin-top: 5px; padding-right: .6em; padding-left: .6em;}
+dl.severity dd { font-size: 24px; }
+
+div.details { margin: 0 -16px !important; }
+div.details h3 { color: #FFF; text-transform: uppercase; background: #333; text-align: center; font-size: 13px; line-height: 30px; background: transparent url(../_img/toph2.png) left top repeat-x; }
+div.details p { margin-left: 5%; margin-right: 5%; }
+
+.bottom { display: none; margin-bottom: 30px; padding-top: 0; }
+.bottom h2 { margin-top: 1em; }
+.bottom .left code { margin-bottom: 0; }
+.bottom .left .liner { padding: 0; }
+.bottom .left .liner p:last-child { margin-bottom: 0; }
+
+.bottom .right .liner { padding: 0; }
+.bottom .right .bookmarklet { width: 296px; padding: 12px; }
+.bottom .right .bookmarklet img { width: 296px; }
+
+.footer { padding: 0; text-align: center; }
