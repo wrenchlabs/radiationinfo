@@ -3,6 +3,7 @@
 rm -rf ~/sites/radiationinfo
 cp -r ~/repos/radiationinfo ~/sites/
 rm -rf ~/sites/radiationinfo/.git
+rm -rf ~/sites/radiationinfo/_src
 rm ~/sites/radiationinfo/build.sh
 rm ~/sites/radiationinfo/README.md
 

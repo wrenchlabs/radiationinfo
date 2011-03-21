@@ -1,7 +1,7 @@
 .radiationinfo-colorscale {
 	height: 100px;
-	background-image: -moz-linear-gradient(top, #8B0100 0%, #EFEC00 50%, #365C00 100%);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8B0100), color-stop(50%,#EFEC00), color-stop(100%,#365C00));
+	background-image: -moz-linear-gradient(top, #8B0100 0%, #EFEC00 36%, #365C00 72%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8B0100), color-stop(36%,#EFEC00), color-stop(72%,#365C00));
 }
 .radiationinfo-unit { cursor: help; border-bottom-width: 1px; border-bottom-style: dotted; }
 
@@ -12,103 +12,103 @@
 		.radiationinfo-risk dd { margin: 0; padding: 0; display: inline; text-transform: uppercase; }
 	.radiationinfo-details { font-size: 11px; margin: 0; padding: 0; color: #505050; }
 
-.radiationinfo-sev1 { border-bottom-color: #385e01; }
-.radiationinfo-sev2 { border-bottom-color: #3a5f00; }
-.radiationinfo-sev3 { border-bottom-color: #3e6100; }
-.radiationinfo-sev4 { border-bottom-color: #3e6400; }
-.radiationinfo-sev5 { border-bottom-color: #426500; }
-.radiationinfo-sev6 { border-bottom-color: #446900; }
-.radiationinfo-sev7 { border-bottom-color: #496c00; }
-.radiationinfo-sev8 { border-bottom-color: #4b6f01; }
-.radiationinfo-sev9 { border-bottom-color: #507200; }
-.radiationinfo-sev10 { border-bottom-color: #547600; }
-.radiationinfo-sev11 { border-bottom-color: #587900; }
-.radiationinfo-sev12 { border-bottom-color: #5c7d00; }
-.radiationinfo-sev13 { border-bottom-color: #608100; }
-.radiationinfo-sev14 { border-bottom-color: #648500; }
-.radiationinfo-sev15 { border-bottom-color: #698900; }
-.radiationinfo-sev16 { border-bottom-color: #6d8d00; }
-.radiationinfo-sev17 { border-bottom-color: #729100; }
-.radiationinfo-sev18 { border-bottom-color: #779500; }
-.radiationinfo-sev19 { border-bottom-color: #7c9901; }
-.radiationinfo-sev20 { border-bottom-color: #809d00; }
-.radiationinfo-sev21 { border-bottom-color: #85a200; }
-.radiationinfo-sev22 { border-bottom-color: #8aa600; }
-.radiationinfo-sev23 { border-bottom-color: #8faa00; }
-.radiationinfo-sev24 { border-bottom-color: #94ae02; }
-.radiationinfo-sev25 { border-bottom-color: #98b300; }
-.radiationinfo-sev26 { border-bottom-color: #9eb700; }
-.radiationinfo-sev27 { border-bottom-color: #a2bb00; }
-.radiationinfo-sev28 { border-bottom-color: #a7bf00; }
-.radiationinfo-sev29 { border-bottom-color: #acc300; }
-.radiationinfo-sev30 { border-bottom-color: #b1c700; }
-.radiationinfo-sev31 { border-bottom-color: #b5cb02; }
-.radiationinfo-sev32 { border-bottom-color: #bbce02; }
-.radiationinfo-sev33 { border-bottom-color: #bed202; }
-.radiationinfo-sev34 { border-bottom-color: #c2d502; }
-.radiationinfo-sev35 { border-bottom-color: #c7d803; }
-.radiationinfo-sev36 { border-bottom-color: #cbdb00; }
-.radiationinfo-sev37 { border-bottom-color: #cfde00; }
-.radiationinfo-sev38 { border-bottom-color: #d2e100; }
-.radiationinfo-sev39 { border-bottom-color: #d7e301; }
-.radiationinfo-sev40 { border-bottom-color: #d9e502; }
-.radiationinfo-sev41 { border-bottom-color: #dce700; }
-.radiationinfo-sev42 { border-bottom-color: #dfe900; }
-.radiationinfo-sev43 { border-bottom-color: #e2ea00; }
-.radiationinfo-sev44 { border-bottom-color: #e5eb02; }
-.radiationinfo-sev45 { border-bottom-color: #e7ec00; }
-.radiationinfo-sev46 { border-bottom-color: #e9ec00; }
-.radiationinfo-sev47 { border-bottom-color: #ebec00; }
-.radiationinfo-sev48 { border-bottom-color: #edec00; }
-.radiationinfo-sev49 { border-bottom-color: #eeec00; }
-.radiationinfo-sev50 { border-bottom-color: #efec03; }
-.radiationinfo-sev51 { border-bottom-color: #efeb00; }
-.radiationinfo-sev52 { border-bottom-color: #efe901; }
-.radiationinfo-sev53 { border-bottom-color: #efe802; }
-.radiationinfo-sev54 { border-bottom-color: #efe500; }
-.radiationinfo-sev55 { border-bottom-color: #efe300; }
-.radiationinfo-sev56 { border-bottom-color: #efe002; }
-.radiationinfo-sev57 { border-bottom-color: #efdd00; }
-.radiationinfo-sev58 { border-bottom-color: #eed900; }
-.radiationinfo-sev59 { border-bottom-color: #edd500; }
-.radiationinfo-sev60 { border-bottom-color: #ecd100; }
-.radiationinfo-sev61 { border-bottom-color: #eacd00; }
-.radiationinfo-sev62 { border-bottom-color: #e9c900; }
-.radiationinfo-sev63 { border-bottom-color: #e7c400; }
-.radiationinfo-sev64 { border-bottom-color: #e5bf00; }
-.radiationinfo-sev65 { border-bottom-color: #e3ba02; }
-.radiationinfo-sev66 { border-bottom-color: #e1b502; }
-.radiationinfo-sev67 { border-bottom-color: #deaf00; }
-.radiationinfo-sev68 { border-bottom-color: #dcaa00; }
-.radiationinfo-sev69 { border-bottom-color: #d9a402; }
-.radiationinfo-sev70 { border-bottom-color: #d79d00; }
-.radiationinfo-sev71 { border-bottom-color: #d49800; }
-.radiationinfo-sev72 { border-bottom-color: #d19202; }
-.radiationinfo-sev73 { border-bottom-color: #ce8c00; }
-.radiationinfo-sev74 { border-bottom-color: #cc8600; }
-.radiationinfo-sev75 { border-bottom-color: #c97f02; }
-.radiationinfo-sev76 { border-bottom-color: #c67900; }
-.radiationinfo-sev77 { border-bottom-color: #c37300; }
-.radiationinfo-sev78 { border-bottom-color: #c06c00; }
-.radiationinfo-sev79 { border-bottom-color: #bd6601; }
-.radiationinfo-sev80 { border-bottom-color: #b96000; }
-.radiationinfo-sev81 { border-bottom-color: #b65900; }
-.radiationinfo-sev82 { border-bottom-color: #b35400; }
-.radiationinfo-sev83 { border-bottom-color: #b04d00; }
-.radiationinfo-sev84 { border-bottom-color: #ad4700; }
-.radiationinfo-sev85 { border-bottom-color: #ab4200; }
-.radiationinfo-sev86 { border-bottom-color: #a83b00; }
-.radiationinfo-sev87 { border-bottom-color: #a53700; }
-.radiationinfo-sev88 { border-bottom-color: #a23000; }
-.radiationinfo-sev89 { border-bottom-color: #a02c00; }
-.radiationinfo-sev90 { border-bottom-color: #9d2701; }
-.radiationinfo-sev91 { border-bottom-color: #9b2200; }
-.radiationinfo-sev92 { border-bottom-color: #981d00; }
-.radiationinfo-sev93 { border-bottom-color: #961900; }
-.radiationinfo-sev94 { border-bottom-color: #941501; }
-.radiationinfo-sev95 { border-bottom-color: #921000; }
-.radiationinfo-sev96 { border-bottom-color: #900a00; }
-.radiationinfo-sev97 { border-bottom-color: #8f0801; }
-.radiationinfo-sev98 { border-bottom-color: #8d0600; }
-.radiationinfo-sev99 { border-bottom-color: #8c0200; }
-.radiationinfo-sev100 { border-bottom-color: #8b0100; }
+.radiationinfo-sev1,
+.radiationinfo-sev2,
+.radiationinfo-sev3,
+.radiationinfo-sev4,
+.radiationinfo-sev5,
+.radiationinfo-sev6,
+.radiationinfo-sev7,
+.radiationinfo-sev8,
+.radiationinfo-sev9,
+.radiationinfo-sev10,
+.radiationinfo-sev11,
+.radiationinfo-sev12,
+.radiationinfo-sev13,
+.radiationinfo-sev14,
+.radiationinfo-sev15,
+.radiationinfo-sev16,
+.radiationinfo-sev17,
+.radiationinfo-sev18,
+.radiationinfo-sev19,
+.radiationinfo-sev20,
+.radiationinfo-sev21,
+.radiationinfo-sev22,
+.radiationinfo-sev23,
+.radiationinfo-sev24,
+.radiationinfo-sev25,
+.radiationinfo-sev26,
+.radiationinfo-sev27,
+.radiationinfo-sev28,
+.radiationinfo-sev29 { border-bottom-color: #405a13; }
+.radiationinfo-sev30 { border-bottom-color: #455d16; }
+.radiationinfo-sev31 { border-bottom-color: #496018; }
+.radiationinfo-sev32 { border-bottom-color: #4d6418; }
+.radiationinfo-sev33 { border-bottom-color: #536819; }
+.radiationinfo-sev34 { border-bottom-color: #566b19; }
+.radiationinfo-sev35 { border-bottom-color: #60731d; }
+.radiationinfo-sev36 { border-bottom-color: #63761e; }
+.radiationinfo-sev37 { border-bottom-color: #697a21; }
+.radiationinfo-sev38 { border-bottom-color: #6d7d22; }
+.radiationinfo-sev39 { border-bottom-color: #738224; }
+.radiationinfo-sev40 { border-bottom-color: #788525; }
+.radiationinfo-sev41 { border-bottom-color: #7b8825; }
+.radiationinfo-sev42 { border-bottom-color: #808d26; }
+.radiationinfo-sev43 { border-bottom-color: #849028; }
+.radiationinfo-sev44 { border-bottom-color: #8a9429; }
+.radiationinfo-sev45 { border-bottom-color: #8e972a; }
+.radiationinfo-sev46 { border-bottom-color: #939a2a; }
+.radiationinfo-sev47 { border-bottom-color: #9ba22f; }
+.radiationinfo-sev48 { border-bottom-color: #a0a530; }
+.radiationinfo-sev49 { border-bottom-color: #a5a932; }
+.radiationinfo-sev50 { border-bottom-color: #a9ad32; }
+.radiationinfo-sev51 { border-bottom-color: #afb134; }
+.radiationinfo-sev52 { border-bottom-color: #b2b435; }
+.radiationinfo-sev53 { border-bottom-color: #b8b835; }
+.radiationinfo-sev54 { border-bottom-color: #bdbc37; }
+.radiationinfo-sev55 { border-bottom-color: #c1bf3a; }
+.radiationinfo-sev56 { border-bottom-color: #c6c33a; }
+.radiationinfo-sev57 { border-bottom-color: #cbc73b; }
+.radiationinfo-sev58 { border-bottom-color: #cfcb3e; }
+.radiationinfo-sev59 { border-bottom-color: #d8d13f; }
+.radiationinfo-sev60 { border-bottom-color: #ddd640; }
+.radiationinfo-sev61 { border-bottom-color: #e1d943; }
+.radiationinfo-sev62 { border-bottom-color: #e7dd43; }
+.radiationinfo-sev63 { border-bottom-color: #ebe043; }
+.radiationinfo-sev64 { border-bottom-color: #f0e447; }
+.radiationinfo-sev65 { border-bottom-color: #f0e345; }
+.radiationinfo-sev66 { border-bottom-color: #eddd44; }
+.radiationinfo-sev67 { border-bottom-color: #e9d641; }
+.radiationinfo-sev68 { border-bottom-color: #e7d241; }
+.radiationinfo-sev69 { border-bottom-color: #e3cb3e; }
+.radiationinfo-sev70 { border-bottom-color: #e1c63e; }
+.radiationinfo-sev71 { border-bottom-color: #dbbb39; }
+.radiationinfo-sev72 { border-bottom-color: #d8b636; }
+.radiationinfo-sev73 { border-bottom-color: #d5b037; }
+.radiationinfo-sev74 { border-bottom-color: #d2a933; }
+.radiationinfo-sev75 { border-bottom-color: #cfa531; }
+.radiationinfo-sev76 { border-bottom-color: #cc9f2f; }
+.radiationinfo-sev77 { border-bottom-color: #ca9a2f; }
+.radiationinfo-sev78 { border-bottom-color: #c5932e; }
+.radiationinfo-sev79 { border-bottom-color: #c28e2b; }
+.radiationinfo-sev80 { border-bottom-color: #c08829; }
+.radiationinfo-sev81 { border-bottom-color: #bd8327; }
+.radiationinfo-sev82 { border-bottom-color: #bb7d27; }
+.radiationinfo-sev83 { border-bottom-color: #b47222; }
+.radiationinfo-sev84 { border-bottom-color: #b26d22; }
+.radiationinfo-sev85 { border-bottom-color: #af671f; }
+.radiationinfo-sev86 { border-bottom-color: #ac621d; }
+.radiationinfo-sev87 { border-bottom-color: #a95d1c; }
+.radiationinfo-sev88 { border-bottom-color: #a7571c; }
+.radiationinfo-sev89 { border-bottom-color: #a45219; }
+.radiationinfo-sev90 { border-bottom-color: #a24d18; }
+.radiationinfo-sev91 { border-bottom-color: #9f4717; }
+.radiationinfo-sev92 { border-bottom-color: #9b4214; }
+.radiationinfo-sev93 { border-bottom-color: #983d14; }
+.radiationinfo-sev94 { border-bottom-color: #963912; }
+.radiationinfo-sev95 { border-bottom-color: #912f10; }
+.radiationinfo-sev96 { border-bottom-color: #8f2d0e; }
+.radiationinfo-sev97 { border-bottom-color: #8c280f; }
+.radiationinfo-sev98 { border-bottom-color: #89250f; }
+.radiationinfo-sev99 { border-bottom-color: #86220d; }
+.radiationinfo-sev100 { border-bottom-color: #841f0b; }
