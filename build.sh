@@ -29,6 +29,13 @@ case $1 in
 		#### LOCAL SETUP ####
 		# {{   }} http://localhost/
 		perl -p -i -e 's/{{([\w]*)}}/http:\/\/localhost\//g' ~/sites/radiationinfo/index.html ~/sites/radiationinfo/_css/* ~/sites/radiationinfo/_js/*;
+		
+		# Remove Google Analytics
+		touch ~/sites/radiationinfo/temp.html
+		awk '/DOCTYPE/,/<\!\-\-Begin Google Analytics\-\->/' ~/sites/radiationinfo/index.html >> ~/sites/radiationinfo/temp.html
+		awk '/<\!\-\-End Google Analytics\-\->/,/<\/html>/' ~/sites/radiationinfo/index.html >> ~/sites/radiationinfo/temp.html
+		rm ~/sites/radiationinfo/index.html
+		mv ~/sites/radiationinfo/temp.html ~/sites/radiationinfo/index.html
         ;;
     remote)
 		#### REMOTE SETUP ####
