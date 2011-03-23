@@ -1,11 +1,23 @@
 #!/bin/sh
 
+# Clear the way!
 rm -rf ~/sites/radiationinfo
 cp -r ~/repos/radiationinfo ~/sites/
 rm -rf ~/sites/radiationinfo/.git
-rm -rf ~/sites/radiationinfo/_src
 rm ~/sites/radiationinfo/build.sh
 rm ~/sites/radiationinfo/README.md
+
+# Prep source data
+wget -O ~/sites/radiationinfo/_src/acute.tsv 'https://spreadsheets.google.com/fm?key=0ApnSRONV3LTVdEpxelZFMlFoTHlkWEgtZ3NiMHN2RlE&hl=en&fmcmd=23&gid=1'
+wget -O ~/sites/radiationinfo/_src/longterm.tsv 'https://spreadsheets.google.com/fm?key=0ApnSRONV3LTVdEpxelZFMlFoTHlkWEgtZ3NiMHN2RlE&hl=en&fmcmd=23&gid=0'
+wget -O ~/sites/radiationinfo/_src/limits.tsv 'https://spreadsheets.google.com/fm?key=0ApnSRONV3LTVdEpxelZFMlFoTHlkWEgtZ3NiMHN2RlE&hl=en&fmcmd=23&gid=2'
+
+node ~/sites/radiationinfo/_src/tojson.js acute > ~/sites/radiationinfo/_src/acute.json
+node ~/sites/radiationinfo/_src/tojson.js longterm > ~/sites/radiationinfo/_src/longterm.json
+node ~/sites/radiationinfo/_src/tojson.js limits > ~/sites/radiationinfo/_src/limits.json
+cat ~/sites/radiationinfo/_src/*.json > ~/sites/radiationinfo/_js/data.js
+
+rm -rf ~/sites/radiationinfo/_src
 
 # Handle CSS
 java -jar ~/devtools/yuicompressor-2.4.2.jar ~/sites/radiationinfo/_css/reset.css -o ~/sites/radiationinfo/_css/reset.css
@@ -18,6 +30,7 @@ cat ~/sites/radiationinfo/_css/reset.css ~/sites/radiationinfo/_css/screen.css >
 rm ~/sites/radiationinfo/_css/reset.css ~/sites/radiationinfo/_css/screen.css
 
 # Handle JS
+java -jar ~/devtools/yuicompressor-2.4.2.jar ~/sites/radiationinfo/_js/data.js -o ~/sites/radiationinfo/_js/data.js
 java -jar ~/devtools/yuicompressor-2.4.2.jar ~/sites/radiationinfo/_js/usepie.js -o ~/sites/radiationinfo/_js/usepie.js
 java -jar ~/devtools/yuicompressor-2.4.2.jar ~/sites/radiationinfo/_js/site.js -o ~/sites/radiationinfo/_js/site.js
 cp ~/sites/radiationinfo/_js/site.js ~/sites/radiationinfo/_js/embed.js
