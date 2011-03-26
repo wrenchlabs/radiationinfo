@@ -30,10 +30,10 @@ cat ~/sites/radiationinfo/_css/reset.css ~/sites/radiationinfo/_css/screen.css >
 rm ~/sites/radiationinfo/_css/reset.css ~/sites/radiationinfo/_css/screen.css
 
 # Handle JS
-java -jar ~/devtools/yuicompressor-2.4.2.jar ~/sites/radiationinfo/_js/data.js -o ~/sites/radiationinfo/_js/data.js
-java -jar ~/devtools/yuicompressor-2.4.2.jar ~/sites/radiationinfo/_js/usepie.js -o ~/sites/radiationinfo/_js/usepie.js
-java -jar ~/devtools/yuicompressor-2.4.2.jar ~/sites/radiationinfo/_js/site.js -o ~/sites/radiationinfo/_js/site.js
-cp ~/sites/radiationinfo/_js/site.js ~/sites/radiationinfo/_js/embed.js
+#java -jar ~/devtools/yuicompressor-2.4.2.jar ~/sites/radiationinfo/_js/data.js -o ~/sites/radiationinfo/_js/data.js
+#java -jar ~/devtools/yuicompressor-2.4.2.jar ~/sites/radiationinfo/_js/usepie.js -o ~/sites/radiationinfo/_js/usepie.js
+#java -jar ~/devtools/yuicompressor-2.4.2.jar ~/sites/radiationinfo/_js/site.js -o ~/sites/radiationinfo/_js/site.js
+cat ~/sites/radiationinfo/_js/site.js ~/sites/radiationinfo/_js/data.js > ~/sites/radiationinfo/_js/embed.js
 
 # Set up hosts
 

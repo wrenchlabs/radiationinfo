@@ -291,24 +291,45 @@ var radiation = {
 		document.body.appendChild(rollover);
 		
 		// Embed
-		radiation.$('.radiationinfo-unit').live('mouseenter', function(event) {
-			var offset = radiation.$(this).offset();
-			var width = radiation.$(this).width();
-			var height = radiation.$('.radiationinfo-rollover').height();
+		radiation.$('.radiationinfo-container').live('mouseenter', function(event) {
+			$span = radiation.$(this);
+			var offset = $span.offset();
+			var width = $span.width();
+			
+			var level = $span.find('.radiationinfo-level').html();
+			var unit = $span.find('.radiationinfo-unit').html();
+
+			var $rollover = radiation.$('.radiationinfo-rollover');
+			$rollover.find('.radiationinfo-block').empty();
+
+			// Load content.
+			var results = radiation.comparison(level, unit, 'acute');
+			$('.radiationinfo-rate').html(level + ' ' + unit);
+			if (results.higher) {
+				$rollover.find('.radiationinfo-block').append('<dl class="radiationinfo-compare"><dt>'+ results.higher.factor +'</dt><dd><table cellspacing="0"><tr><td>'+ results.higher.description +'</td></tr></table></dd></dl>');
+			}
+			if (results.equal) {
+				$rollover.find('.radiationinfo-block').append('<dl class="radiationinfo-compare"><dt>'+ results.equal.factor +'</dt><dd><table cellspacing="0"><tr><td>'+ results.equal.description +'</td></tr></table></dd></dl>');
+			}
+			if (results.lower) {
+				$rollover.find('.radiationinfo-block').append('<dl class="radiationinfo-compare"><dt>'+ results.lower.factor +'</dt><dd><table cellspacing="0"><tr><td>'+ results.lower.description +'</td></tr></table></dd></dl>');
+			}			
+			
+			var height = $rollover.height();
 			var position  = { display: 'block', top: offset.top-height-30+'px', left: event.pageX-91+'px' };
-			radiation.$('.radiationinfo-rollover').css(position);
+			$rollover.css(position);
 		});
-		radiation.$('.radiationinfo-unit').live('mouseleave', function() {
+		radiation.$('.radiationinfo-container').live('mouseleave', function() {
 			radiation.$('.radiationinfo-rollover').css({left:'-999em', top: 0 });
 		});
 	},
 	
 	replacementcontent: function (match, level, unit, index, textnodevalue) {
-		return '<span class="radiationinfo-unit radiationinfo-sev'+radiation.severity(level, unit)+'">'+match+'</span>';
+		return '<span class="radiationinfo-container radiationinfo-sev'+radiation.severity(level, unit)+'"><span class="radiationinfo-level">'+level+'</span> <span class="radiationinfo-unit">'+unit+'</span></span>';
 	},
 	
-	rollovercontent: function() {
-		return '<h1 class="radiationinfo-rate">1 microsievert</h1><dl class="radiationinfo-risk"><dt>Short term risk:</dt><dd class="sev1">None<br /></dd><dt>Long term risk:</dt><dd class="sev1">None</dd></dl><p class="radiationinfo-details">This is about the equivalent of eating ten bananas and is harmless.</p>';
+	rollovercontent: function(level, unit) {		
+		return '<h1 class="radiationinfo-rate"></h1><div class="radiationinfo-block"></div>';
 	},
 	
 	load$: function() {
@@ -325,7 +346,7 @@ var radiation = {
 				radiation.$ = jQuery.noConflict(true);
 			}
 			radiation.$(function() {
-				$('head').append('<link rel="stylesheet" type="text/css" href="{{CDN}}_css/radiation.css" />');
+				radiation.$('head').append('<link rel="stylesheet" type="text/css" href="{{CDN}}_css/radiation.css" />');
 				document.body.normalize();
 				radiation.findonpage(document.body);
 				radiation.processfinds();				
