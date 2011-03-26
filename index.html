@@ -56,6 +56,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<ol id="footnotes"></ol>
 
 		<div class="bottom">
 			<div class="left">
@@ -100,6 +102,7 @@
 	<script type="text/javascript" src="{{JS}}_js/site.js"></script>
 	<script type="text/javascript" src="{{JS}}_js/data.js"></script>
 	<script type="text/javascript">
+		var sources = 0;
 		var unit;
 
 		// Get the defaults set correctly, allow for prepopulation.
@@ -192,6 +195,8 @@
 
 		// Adjust information on the right hand side.
 		function builddescription() {
+			sources = 0;
+			$('#footnotes').empty();
 			var level = $('#level').val();
 			var unit = $('#unit').val();
 
@@ -202,16 +207,19 @@
 				$category = $('#'+categories[i]);
 				$category.find('dl').remove();
 				if (results[i].higher) {
-					$category.append('<dl class="higher compare dropshadow"><dt>'+ results[i].higher.factor +'</dt><dd><table cellspacing="0"><tr><td>'+ results[i].higher.description +'</td></tr></table></dd></dl>');
+					$category.append('<dl class="higher compare dropshadow"><dt>'+ results[i].higher.factor +'</dt><dd><table cellspacing="0"><tr><td>'+ results[i].higher.description +'<sup><a href="#footnotes'+ (++sources) +'">'+ (sources) +'</a></sup></td></tr></table></dd></dl>');
+					$('#footnotes').append('<li><a name="footnotes'+sources+'" href="'+ results[i].higher.source +'">'+ results[i].higher.source +'</a>')
 				}
 				if (results[i].equal) {
-					$category.append('<dl class="equal compare dropshadow"><dt>'+ results[i].equal.factor +'</dt><dd><table cellspacing="0"><tr><td>'+ results[i].equal.description +'</td></tr></table></dd></dl>');
+					$category.append('<dl class="equal compare dropshadow"><dt>'+ results[i].equal.factor +'</dt><dd><table cellspacing="0"><tr><td>'+ results[i].equal.description +'<sup><a href="#footnotes'+ (++sources) +'">'+ (sources) +'</a></sup></td></tr></table></dd></dl>');
+					$('#footnotes').append('<li><a name="footnotes'+sources+'" href="'+ results[i].equal.source +'">'+ results[i].equal.source +'</a>')
 				}
 				//$category.append('<dl class="equal compare dropshadow"><dt>=</dt><dd class="color"><span class="level"></span> <span class="unit"></span></dd></dl>');
 				if (results[i].lower) {
-					$category.append('<dl class="lower compare dropshadow"><dt>'+ results[i].lower.factor +'</dt><dd><table cellspacing="0"><tr><td>'+ results[i].lower.description +'</td></tr></table></dd></dl>');
+					$category.append('<dl class="lower compare dropshadow"><dt>'+ results[i].lower.factor +'</dt><dd><table cellspacing="0"><tr><td>'+ results[i].lower.description +'<sup><a href="#footnotes'+ (++sources) +'">'+ (sources) +'</a></sup></td></tr></table></dd></dl>');
+					$('#footnotes').append('<li><a name="footnotes'+sources+'" href="'+ results[i].lower.source +'">'+ results[i].lower.source +'</a>')
 				}
-					
+				
 			}			
 
 			// Fill in the blanks.

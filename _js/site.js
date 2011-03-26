@@ -221,16 +221,19 @@ var radiation = {
 			results['higher'] = {};
 			results['higher'].factor = radiation.quickratio(higher.level, value.level);
 			results['higher'].description = radiation.quickstring(higher, unit);
+			results['higher'].source = higher.source;
 		}
 		if (equal) {
 			results['equal'] = {};
 			results['equal'].factor = '=';
 			results['equal'].description = radiation.quickstring(equal, unit);
+			results['equal'].source = equal.source;
 		}
 		if (lower) {
 			results['lower'] = {};
 			results['lower'].factor = radiation.quickratio(lower.level, value.level, true);
 			results['lower'].description = radiation.quickstring(lower, unit);
+			results['lower'].source = lower.source;
 		}
 		
 		return results;
