@@ -30,14 +30,18 @@ p {margin: .75em 0; line-height: 1.25;}
 			.top .left form select { display: block; width: 100%; color: #333; text-align: left; font-size: 12px; line-height: 1.5; height: 18px; margin: 8px 0;}
 			.top .left form select { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-	.top .right { float: left; display: inline; width: 50%; min-width: 320px; }
-		.top .right h2 { border-left: 1px solid #555; margin-left: -1px; clear: both; }
+	.top .right { float: left; display: inline; width: 50%; min-width: 320px; padding-bottom: 2.5%; }
+		.top .right h2 { border-left: 1px solid #555; margin-left: -1px; clear: both; margin-bottom:5%; }
 		.top .right .liner { float: left; display: inline; width: 100%; }
 
-		dl.compare { clear: both; float: left; display: inline; width: 90%; margin: 2px 5%; }
-			dl.compare dt { float: left; display: inline; width: 25%; color: #929292; font-size: 36px; line-height: 1.5; text-align: center; }
-			dl.compare dd { float: right; display: inline; width: 75%; }
-			dl.compare dd.color { color: #FFF; font-size: 30px; line-height: 2; text-shadow: 2px 2px 3px #000; background-color: #999; text-align: center; }
+		dl.compare { clear: both; float: left; display: inline; width: 85%; margin: 2px 7.5%; }
+			dl.compare dt { float: left; display: inline; width: 28%; color: #929292; font-size: 36px; line-height: 1.5; text-align: center; }
+			dl.compare dd { float: right; display: inline; width: 72%; }
+			.top .right dl.compare dd td { vertical-align: middle; color: #333; line-height: 1.25; height: 54px; padding: 3px; }
+			dl.compare dd.color { color: #FFF; font-size: 27px; line-height: 2; text-shadow: 2px 2px 3px #000; background-color: #999; text-align: center; }
+		
+		.top .right h3 { float: left; display: inline; color: #696969; font-size: 13px; font-weight: bold; text-transform: uppercase; margin: 2em 0 .75em 7.5%; }
+		.top .right .liner p { margin: 0 7.5% .75em; }
 
 .bottom { clear: both; float: left; display: inline; margin: 30px 0 2em; padding-top: 42px; color: #696969; background: transparent url(../_img/hr.png) left top repeat-x; }
 	.bottom h2 { color:#2b2b2b; font-size: 30px; }

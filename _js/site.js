@@ -177,8 +177,8 @@ var radiation = {
 		var value = radiation.convert(jsonobj.level,jsonobj.unit,targetunit, true);
 		var description = jsonobj.description;
 		description = description.substr(0, description.length-1);
-		description = description[0].toLowerCase() + description.substr(1);
-		return description + ' ('+value.level + ' ' + value.unit + ')';
+//		description = description[0].toLowerCase() + description.substr(1);
+		return description + ' ('+value.level + ' ' + value.unit + ').';
 	},
 	
 	quickratio: function(level1, level2, lessthan) {
@@ -187,8 +187,6 @@ var radiation = {
 		var low = Math.min(level1, level2);
 
 		var ratio = Math.floor(high/low);
-		
-		console.log(ratio);
 		
 		if (ratio > 1 && ratio <= 10) {
 			return lessthan ? ratio + 'x' : '1/'+ratio;
@@ -217,100 +215,25 @@ var radiation = {
 			}
 		}
 		
-		var results = {'higher':{},'equal':{},'lower':{}};
+		var results = {};
 		
 		if (higher) {
+			results['higher'] = {};
 			results['higher'].factor = radiation.quickratio(higher.level, value.level);
-			results['higher'].description = higher.description;
+			results['higher'].description = radiation.quickstring(higher, unit);
 		}
 		if (equal) {
+			results['equal'] = {};
 			results['equal'].factor = '=';
-			results['equal'].description = equal.description;
+			results['equal'].description = radiation.quickstring(equal, unit);
 		}
 		if (lower) {
+			results['lower'] = {};
 			results['lower'].factor = radiation.quickratio(lower.level, value.level, true);
-			results['lower'].description = lower.description;
+			results['lower'].description = radiation.quickstring(lower, unit);
 		}
 		
-		console.log(results);
-
-		var strings = [];
-		
-		if (equal) {
-			if (equal.type == 'reference') {
-				strings.push('Exposure at this level is approximately equivalent to ' + radiation.quickstring(equal, unit)+'.');
-			}
-			if (equal.type == 'result') {
-				strings.push('Exposure at approximately this level ' + radiation.quickstring(equal, unit)+'.');
-			}
-			if (equal.type == 'limit') {
-				strings.push('Exposure at approximately this level is right at ' + radiation.quickstring(equal, unit)+'.');
-			}
-		} 
-		if (lower && higher && !equal) {
-			if (lower.type =='reference' && higher.type  == 'reference') {
-				strings.push('Exposure at this level is higher than ' + radiation.quickstring(lower,unit) + ' but less than ' + radiation.quickstring(higher,unit)+'.');
-			}
-			if (lower.type =='reference' && higher.type  == 'result') {
-				strings.push('Exposure at this level is higher than ' + radiation.quickstring(lower,unit) + ' but less than that which ' + radiation.quickstring(higher,unit)+'.');
-			}
-			if (lower.type =='result' && higher.type  == 'result') {
-				strings.push('Exposure at this level is higher than that which ' + radiation.quickstring(lower,unit) + ' but less than that which ' + radiation.quickstring(higher,unit)+'.');
-			}
-			if (lower.type =='limit' && higher.type  == 'limit') {
-				strings.push('Exposure at this level is below the ' + radiation.quickstring(higher,unit) + ' but higher than ' + radiation.quickstring(lower,unit)+'.');
-			}
-		}
-		if (lower && !equal) {
-			var ratio = radiation.quickratio(value.level, lower.level);
-			if (ratio > 1 && ratio <= 10) {
-				if (lower.type == 'reference') {
-					strings.push('Exposure at this level is approximately '+ratio+' times higher than ' + radiation.quickstring(lower, unit)+'.');
-				}
-				if (lower.type == 'result') {
-					strings.push('Exposure at this level is approximately '+ratio+' times higher than that which ' + radiation.quickstring(lower, unit)+'.');
-				}
-				if (lower.type == 'limit') {
-					strings.push('Exposure at this level is approximately '+ratio+' times higher than the ' + radiation.quickstring(lower, unit)+'.');
-				}
-			} else {
-				if (lower.type == 'reference') {
-					strings.push('Exposure at this level is higher than ' + radiation.quickstring(lower, unit)+'.');
-				}
-				if (lower.type == 'result') {
-					strings.push('Exposure at this level is higher than that which ' + radiation.quickstring(lower, unit)+'.');
-				}
-				if (lower.type == 'limit') {
-					strings.push('Exposure at this level is higher than the ' + radiation.quickstring(lower, unit)+'.');
-				}				
-			}
-		}
-		if (higher && !equal) {
-			var ratio = radiation.quickratio(value.level, higher.level);
-			if (ratio > 1 && ratio <= 10) {
-				if (higher.type == 'reference') {
-					strings.push('Exposure at this level is approximately '+ratio+' times less than ' + radiation.quickstring(higher, unit)+'.');
-				}
-				if (higher.type == 'result') {
-					strings.push('Exposure at this level is approximately '+ratio+' times less than that which ' + radiation.quickstring(higher, unit)+'.');
-				}				
-				if (higher.type == 'limit') {
-					strings.push('Exposure at this level is approximately '+ratio+' times less than the ' + radiation.quickstring(higher, unit)+'.');
-				}				
-			} else {
-				if (higher.type == 'reference') {
-					strings.push('Exposure at this level is less than ' + radiation.quickstring(higher, unit)+'.');
-				}
-				if (higher.type == 'result') {
-					strings.push('Exposure at this level is less than that which ' + radiation.quickstring(higher, unit)+'.');
-				}				
-				if (higher.type == 'limit') {
-					strings.push('Exposure at this level is less than the ' + radiation.quickstring(higher, unit)+'.');
-				}				
-			}
-		}
-
-		return strings;		
+		return results;
 	},
 
 	/* For inline replacement. */
