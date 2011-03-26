@@ -68,7 +68,7 @@ var radiation = {
 		for (var unit = 0; unit < radiation.forwardlookup.length; unit++) {
 			for (var prefix = 0; prefix < radiation.forwardlookup[unit].length; prefix++) {
 				for (var string = 0; string < radiation.forwardlookup[unit][prefix].length; string++) {
-					radiation.reverselookup[radiation.forwardlookup[unit][prefix][string]] = [unit, prefix];
+					radiation.reverselookup[radiation.forwardlookup[unit][prefix][string].toLowerCase()] = [unit, prefix];
 					radiation.unitstrings.push(radiation.forwardlookup[unit][prefix][string]);
 				}
 			}
@@ -77,6 +77,7 @@ var radiation = {
 
 	unitkey: function(unit) {
 		if (typeof unit == 'string') {
+			unit = unit.toLowerCase();
 			unit =  radiation.reverselookup[unit];
 		}
 		return radiation.forwardlookup[unit[0]][unit[1]][0];
@@ -84,6 +85,7 @@ var radiation = {
 	
 	getsignificantdigits: function(unit) {
 		if (typeof unit == 'string') {
+			unit = unit.toLowerCase();
 			unit =  radiation.reverselookup[unit];
 		}
 		return radiation.significantdigits[unit[0]][unit[1]];
@@ -101,9 +103,11 @@ var radiation = {
 		// level = currently specified value
 		// from, to = string or [unit coefficient lookup, prefix coefficient lookup]
 		if (typeof from == 'string') {
+			from = from.toLowerCase();
 			from =  radiation.reverselookup[from];
 		}
 		if (typeof to == 'string') {
+			to = to.toLowerCase();
 			to =  radiation.reverselookup[to];
 		}
 		var results = {};
@@ -304,7 +308,7 @@ var radiation = {
 
 			// Load content.
 			var results = radiation.comparison(level, unit, 'acute');
-			$('.radiationinfo-rate').html(level + ' ' + unit);
+			radiation.$('.radiationinfo-rate').html(level + ' ' + unit);
 			if (results.higher) {
 				$rollover.find('.radiationinfo-block').append('<dl class="radiationinfo-compare"><dt>'+ results.higher.factor +'</dt><dd><table cellspacing="0"><tr><td>'+ results.higher.description +'</td></tr></table></dd></dl>');
 			}

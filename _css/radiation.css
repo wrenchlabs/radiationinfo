@@ -9,7 +9,7 @@
 	.radiationinfo-rate { margin: 0; padding: 0; border: none; font-size: 14px; font-weight: bold; color: #000; }
 	.radiationinfo-block { float: left; display: inline; margin: 6px 0; padding: 6px 0; border-top: 1px solid #CACACA; border-bottom: 1px solid #CACACA; }
 
-	dl.radiationinfo-compare { clear: both; float: left; display: inline; font-size: 12px;  color: #505050;}
+	dl.radiationinfo-compare { clear: both; float: left; display: inline; font-size: 12px; color: #505050; margin: 0; padding: 0; }
 		.radiationinfo-compare dt { float: left; display: inline; width: 20%; margin: 0; padding: 0; color: #505050; text-align: center; font-weight: bold; }
 		.radiationinfo-compare dd { float: right; display: inline; width: 77%; margin: 0; padding: 0 3% 0 0; }
 
