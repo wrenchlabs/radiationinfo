@@ -30,5 +30,5 @@ function buildJSON(string) {
 
 
 fs.readFile(process.cwd().replace('Repos','sites')+'/_src/'+process.argv[2]+'.tsv', 'utf8', function (err, res) {
-	console.log('var ' + process.argv[2] + ' = ' + buildJSON(res) + ';');
+	console.log('radiation.' + process.argv[2] + ' = ' + buildJSON(res) + ';');
 });

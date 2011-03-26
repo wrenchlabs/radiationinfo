@@ -36,43 +36,32 @@
 								<option value="mrem">millirem (mrem)</option>
 								<option value="rem">rem</option>
 							</select>
-							<div>PER</div>
-							<select name="rate" id="rate">
-								<option value="instant">instant</option>
-								<option value="hour" selected="selected">hour</option>
-								<option value="day">day</option>
-								<option value="month">month</option>
-								<option value="year">year</option>
-							</select>
 						</div></form>
 					</div>
 				</div>
-				<div class="right">
-					<h2>Risk</h2>
+				<div id="result" class="right exclude">
+					<h2>Understand</h2>
+					
+					<h2>Acute Exposure</h2>
 					<div class="liner">
-						<div class="calculate">
-							<div id="from" class="unitbox dropshadow"><span class="level"></span> <span class="unit"></span>/<span class="rate"></span></div>
-							<div class="compare">=</div>
-							<div id="to" class="unitbox dropshadow"><span class="level"></span> <span class="unit"></span>/<span class="rate"></span></div>
-						</div>
-
-						<dl class="severity dropshadow">
-							<dt><span class="length">Acute Exposure</span> <span class="details">less than a day</span></dt>
-								<dd class="backgroundsev1">None</dd>
+						<dl class="compare dropshadow">
+							<dt class="factor">1/10</dt>
+								<dd>Results in radiation sickness (hemorrhaging, diarrhea, hair loss, vomiting, fatigue, nausea, and changes in blood chemistry). Not fatal. (16000 μSv)</dd>
 						</dl>
-						<dl class="severity dropshadow">
-							<dt><span class="length">Long-Term Exposure</span> <span class="details">one year</span></dt>
-								<dd class="backgroundsev80">High</dd>
+						<dl class="compare dropshadow">
+							<dt class="factor">=</dt>
+								<dd class="color"><span class="level"></span> <span class="unit"></span></dd>
 						</dl>
-
-						<div class="details">
-							<h3>Details</h3>
-							<!-- General Information -->
-							<p>Risks from radiation are generally more severe in acute dosages, exposure received in a short period of time. Cumulative exposure</p>
-
-							<!-- This Particular Dosage -->
-						</div>
+						<dl class="compare dropshadow">
+							<dt class="factor">10x</dt>
+								<dd>Getting a CT scan of your heart (16000 μSv)</dd>
+						</dl>
 					</div>
+					<h2>Details</h2>
+					<div class="liner">
+						<p>Risks from radiation are generally more severe in acute dosages&mdash;exposure received in a short period of time.</p>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -94,7 +83,7 @@
 					<p>The gadget is minified and served gzipped from Amazon Web Services's CloudFront to minimize the performance impact on the load of your page. It adds only one global variable ("radiation") and plays nicely with others. Do not save the file and serve it from your own server as that reduces the benefits of your user's cache and prevents you from receiving updates which may improve accuracy or performance. Please confirm that it works with the bookmarklet version prior to embedding it on your site.</p>
 					<p>You may also link to this page with prepopulated values:</p>
 					<code class="exclude">
-						&lt;a href="{{HOST}}?level=250&amp;unit=millisieverts&amp;rate=hour"&gt;250 millisieverts per hour&lt;/a&gt;
+						&lt;a href="{{HOST}}?level=250&amp;unit=millisieverts"&gt;250 millisieverts&lt;/a&gt;
 					</code>
 				</div>
 			</div>
@@ -118,14 +107,14 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.js"></script>
 	<script type="text/javascript" src="{{JS}}_js/site.js"></script>
+	<script type="text/javascript" src="{{JS}}_js/data.js"></script>
 	<script type="text/javascript">
 		var unit;
 
 		// Get the defaults set correctly, allow for prepopulation.
 		var settings = {
 			level: 1,
-			unit: 'microsievert',
-			rate: 'hour'
+			unit: 'microsievert'
 		};
 
 		function parseqs(unit) {
@@ -138,7 +127,7 @@
 		}
 
 		var querystring = {};
-		var args = ['level', 'unit', 'rate'];
+		var args = ['level', 'unit'];
 		var temp;
 		for (var i = 0; i < args.length; i++) {
 			temp = parseqs(args[i]);
@@ -146,17 +135,14 @@
 				querystring[args[i]] = temp;
 			}
 		}
+		
 
 		$.extend(settings, querystring);
 		settings.unit = radiation.unitkey(settings.unit);
-		var understandable = radiation.understandable(settings.level, settings.unit, settings.rate);
 
 		for (var i = 0; i < args.length; i++) {
 			$('#'+args[i]).val(settings[args[i]]);
-			$('#from .'+args[i]).html(settings[args[i]]);
-			$('#to .'+args[i]).html(understandable[args[i]]);
 		}
-
 		unit = settings.unit;
 
 		// Set up the slider.
@@ -215,23 +201,34 @@
 
 		// Adjust information on the right hand side.
 		function builddescription() {
-			var understandable = radiation.understandable($('#level').val(), $('#unit').val(), $('#rate').val());
-			$('#to .level').html(understandable.level);
-			$('#to .unit').html(understandable.unit);
-			$('#to .rate').html(understandable.rate);
+			var level = $('#level').val();
+			var unit = $('#unit').val();
+			$('#result .level').html(level);
+			$('#result .unit').html(unit);
+			$('#result .color').removeClass(function(index, classname) {
+				var matches = classname.match(/backgroundsev\d+/g) || [];
+				return (matches.join(' '));
+			}).addClass("backgroundsev"+radiation.severity(level, unit));
+
+			var strings = {};
+			var categories = ['acute', 'longterm', 'limits'];
+			for (var i = 0; i < categories.length; i++) {
+				strings[i] = radiation.comparison(level, unit, categories[i]);
+				$('#'+categories[i]).find('p').remove();
+				$.each(strings[i], function(key, value) {
+					$('#'+categories[i]).append('<p>'+value+'</p>');
+				});
+			}
+			
+			
+			
 		}
 
-		$(".scale").bind('slidestop', function() {
-			$('#from .level').html($('#level').val());
+		// First load
+		builddescription();
+		$(".scale").bind('slidestop', builddescription);
+		$("#level, #unit").bind('change', builddescription);
 
-			builddescription();
-		});
-		$("#level, #unit, #rate").bind('change', function() {
-			$('#from .'+$(this).attr('id')).html($(this).val());
-			$('#from .level').html($('#level').val());
-
-			builddescription();
-		});
 	</script>
 	<!--[if lte IE 8]>
 	<script src="{{JS}}_js/PIE.js"></script>

@@ -31,23 +31,13 @@ p {margin: .75em 0; line-height: 1.25;}
 			.top .left form select { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 	.top .right { float: left; display: inline; width: 50%; min-width: 320px; }
-		.top .right h2 { border-left: 1px solid #555; margin-left: -1px; }
-		.top .right .liner { float: left; display: inline; padding: 10%; }
-		.calculate { float: left; display: inline; width: 100%; margin-bottom: 5%; }
-			.calculate div { float: left; display: inline; padding: 20px 0;}
-			.unitbox { width: 46%; text-align: center; color: #505050; font-size: 14px; }
-				.unitbox .level { display: block; font-size: 32px; color: #929292;}
-			.compare { width: 8%; text-align: center; line-height: 46px; color: #666; font-weight: bold; font-size: 26px; }
+		.top .right h2 { border-left: 1px solid #555; margin-left: -1px; clear: both; }
+		.top .right .liner { float: left; display: inline; width: 100%; }
 
-		dl.severity { clear: both; float: left; display: inline; width: 100%; margin: 2px 0; }
-			dl.severity dt { float: left; display: inline; width: 54%; color:#313131; text-transform: uppercase; line-height: 1; }
-				dl.severity dt span { display: block; text-align: center; padding: 1px 0;}
-				dl.severity dt .length { font-size: 12px; font-weight: bold; margin-top: 16px; }
-				dl.severity dt .details { font-size: 11px; }
-			dl.severity dd { float: right; display: inline; width: 46%; color: #FFF; font-size: 30px; line-height: 2; text-transform: uppercase; text-shadow: 2px 2px 3px #000; background-color: #999; text-align: center; }
-		
-		div.details { clear: both; padding-top: 7.5%; margin-bottom: -9px; }
-			div.details h3 { font-size: 13px; font-weight: bold; color: #696969; text-transform: uppercase;}
+		dl.compare { clear: both; float: left; display: inline; width: 90%; margin: 2px 5%; }
+			dl.compare dt { float: left; display: inline; width: 25%; color: #929292; font-size: 36px; line-height: 1.5; text-align: center; }
+			dl.compare dd { float: right; display: inline; width: 75%; }
+			dl.compare dd.color { color: #FFF; font-size: 30px; line-height: 2; text-shadow: 2px 2px 3px #000; background-color: #999; text-align: center; }
 
 .bottom { clear: both; float: left; display: inline; margin: 30px 0 2em; padding-top: 42px; color: #696969; background: transparent url(../_img/hr.png) left top repeat-x; }
 	.bottom h2 { color:#2b2b2b; font-size: 30px; }
@@ -66,7 +56,7 @@ p {margin: .75em 0; line-height: 1.25;}
 
 .top { background-color: rgba(255,255,255,0.4); }
 .unitbox { background: rgba(255,255,255,0.4); }
-dl.severity { background: rgba(255,255,255,0.4); }
+dl.compare { background: rgba(255,255,255,0.4); }
 .bottom .left .demo { background: rgba(255,255,255,0.4); } 
 
 .backgroundsev1,
