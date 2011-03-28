@@ -59,6 +59,9 @@ var radiation = {
 		]
 	],
 	
+	multipleratio: ['','','two','three','four','five','six','seven','eight','nine','ten'],
+	fractionratio: ['','','one half','one third','one fourth','one fifth','one sixth','one seventh','one eighth','one ninth','one tenth'],	
+	
 	// Generated from forwardlookup on run.
 	// Allows going from a text value to [unit lookup, prefix lookup].
 	reverselookup: {},
@@ -181,7 +184,7 @@ var radiation = {
 		var value = radiation.convert(jsonobj.level,jsonobj.unit,targetunit, true);
 		var description = jsonobj.description;
 		description = description.substr(0, description.length-1);
-//		description = description[0].toLowerCase() + description.substr(1);
+		description = description[0].toLowerCase() + description.substr(1);
 		return description + ' ('+value.level + ' ' + value.unit + ').';
 	},
 	
@@ -193,9 +196,19 @@ var radiation = {
 		var ratio = Math.floor(high/low);
 		
 		if (ratio > 1 && ratio <= 10) {
-			return lessthan ? ratio + 'x' : '1/'+ratio;
+			if (lessthan) {
+				return { icon: ratio + 'x', string: radiation.multipleratio[ratio] + ' times', numeric: ratio };
+			} else {
+				return { icon: '1/'+ratio, string: radiation.fractionratio[ratio], numeric: ratio };
+			}
+//			return lessthan ? ratio + 'x' : '1/'+ratio;
 		} else {
-			return lessthan ? '>' : '<';
+			if (lessthan) {
+				return { icon: '>', string: 'Greater than' };
+			} else {
+				return { icon: '<', string: 'Less than' };				
+			}
+//			return lessthan ? '>' : '<';				
 		}
 	},
 
@@ -220,23 +233,31 @@ var radiation = {
 		}
 		
 		var results = {};
+		var ratio;
+		var prefix;
 		
 		if (higher) {
+			ratio = radiation.quickratio(higher.level, value.level);
+			prefix = ratio.numeric ? 'Approximately ' : '';
 			results['higher'] = {};
-			results['higher'].factor = radiation.quickratio(higher.level, value.level);
-			results['higher'].description = radiation.quickstring(higher, unit);
+			results['higher'].factor = ratio.icon
+			results['higher'].description = prefix + ratio.string + ' ' + radiation.quickstring(higher, unit);
 			results['higher'].source = higher.source;
 		}
 		if (equal) {
+			ratio = { icon: '=', string: 'Equal to'};
+			prefix = ratio.numeric ? 'Approximately ' : '';
 			results['equal'] = {};
-			results['equal'].factor = '=';
-			results['equal'].description = radiation.quickstring(equal, unit);
+			results['equal'].factor = ratio.icon;
+			results['equal'].description = prefix + ratio.string + ' ' + radiation.quickstring(equal, unit);
 			results['equal'].source = equal.source;
 		}
 		if (lower) {
+			ratio = radiation.quickratio(lower.level, value.level, true);
+			prefix = ratio.numeric ? 'Approximately ' : '';
 			results['lower'] = {};
-			results['lower'].factor = radiation.quickratio(lower.level, value.level, true);
-			results['lower'].description = radiation.quickstring(lower, unit);
+			results['lower'].factor = ratio.icon;
+			results['lower'].description = prefix + ratio.string + ' ' + radiation.quickstring(lower, unit);
 			results['lower'].source = lower.source;
 		}
 		

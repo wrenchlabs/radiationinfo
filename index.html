@@ -41,18 +41,17 @@
 				</div>
 				<div id="result" class="right exclude">
 					<h2>Understand</h2>
-					<dl class="equal compare dropshadow"><dt>=</dt><dd class="color"><span class="level"></span> <span class="unit"></span></dd></dl>					
+					<dl class="equal compare dropshadow"><dt style="display: none;">=</dt><dd style="width: 100%;" class="color"><span class="level"></span> <span class="unit"></span></dd></dl>					
 					<h3>Acute Exposure</h3>
-					<div id="acute" class="liner"></div>
+					<div id="acute" class="liner"><p>Risks from radiation are generally more severe in acute dosages&mdash;exposure received in a short period of time. This level of radiation is:</p></div>
 					<h3>Long Term Exposure</h3>
-					<div id="longterm" class="liner"></div>
+					<div id="longterm" class="liner"><p>This level of radiation is:</p></div>
+<!--
 					<h3>Limits</h3>
-					<div id="limits" class="liner"></div>
+					<div id="limits" class="liner"><p>This level of radiation is:</p></div>
 					<h3>General Information</h3>
-					<div class="liner">
-						<p>Risks from radiation are generally more severe in acute dosages&mdash;exposure received in a short period of time.</p>
-					</div>
-
+					<div class="liner"></div>
+-->
 				</div>
 			</div>
 		</div>
@@ -201,7 +200,7 @@
 			var unit = $('#unit').val();
 
 			var results = {};
-			var categories = ['acute', 'longterm', 'limits'];
+			var categories = ['acute', 'longterm']; // ['limits'];
 			for (var i = 0; i < categories.length; i++) {
 				results[i] = radiation.comparison(level, unit, categories[i]);
 				$category = $('#'+categories[i]);
