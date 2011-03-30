@@ -98,6 +98,19 @@ var radiation = {
 		var significantdigits = radiation.getsignificantdigits(level.unit);
 		if (untruncated) { significantdigits += 2; }
 		level.level = Math.round(level.level*Math.pow(10,significantdigits))/Math.pow(10,significantdigits);
+
+		/*
+		if (!untruncated && significantdigits) {
+			var segments = level.level.toString().split('.');
+			if (segments.length != 2) { segments[1] = ''; }
+
+			while (segments[1].length < significantdigits) {
+				segments[1] = segments[1] + '0';
+			}
+
+			level.level = segments.join('.');
+		}
+		*/
 		return level;
 	},
 	
